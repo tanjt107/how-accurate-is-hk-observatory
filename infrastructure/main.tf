@@ -1,17 +1,29 @@
+module "analytics" {
+    source            = "./modules/analytics"
+    pubsub_topic_name = var.pubsub_topic_name
+}
+
 module "compute" {
-    source = "./modules/compute"
-    fnd_bucket_name = module.storage.fnd_bucket_name
-    rhrread_bucket_name = module.storage.rhrread_bucket_name
+    source              = "./modules/compute"
+    location            = var.region
+    gcf_bucket_name     = var.gcf_bucket_name
+    gcf_zip_name        = module.storage.gcf_zip_name
+    pubsub_topic_id     = module.analytics.pubsub_topic_id
+}
+
+module "devtools" {
+    source              = "./modules/devtools"
+    pubsub_topic_id     = module.analytics.pubsub_topic_id
+    fnd_job_name        = var.fnd_job_name
+    rhrread_job_name    = var.rhrread_job_name
+    fnd_bucket_name     = var.fnd_bucket_name
+    rhrread_bucket_name = var.rhrread_bucket_name
 }
 
 module "storage" {
-    source = "./modules/storage"
-}
-
-module "integration" {
-    source = "./modules/integration"
-    fnd_lambda_arn = module.compute.fnd_lambda_arn
-    rhrread_lambda_arn = module.compute.rhrread_lambda_arn
-    fnd_function_name = module.compute.fnd_function_name
-    rhrread_function_name = module.compute.rhrread_function_name
+    source              = "./modules/storage"
+    bucket_location     = var.bucket_location
+    fnd_bucket_name     = var.fnd_bucket_name
+    gcf_bucket_name     = var.gcf_bucket_name
+    rhrread_bucket_name = var.rhrread_bucket_name
 }

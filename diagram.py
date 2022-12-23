@@ -1,10 +1,11 @@
-from sched import scheduler
 from diagrams import Diagram
-from diagrams.aws.compute import Lambda
-from diagrams.aws.integration import Eventbridge
-from diagrams.aws.storage import S3
+from diagrams.gcp.analytics import PubSub
+from diagrams.gcp.compute import Functions
+from diagrams.gcp.devtools import Scheduler
+from diagrams.gcp.storage import Storage
 
-with Diagram("HKO Web Scraping"):
-    schedule = Eventbridge("EveryHour")
-    schedule >> Lambda("DownloadFnd") >> S3("hko-fnd")
-    schedule >> Lambda("DownloadrhrRead") >> S3("hko-rhrread")
+with Diagram("How accurate is HK Observatory"):
+    pubsub = PubSub("hko-topic")
+    func = Functions("download-hko")
+    Scheduler("hko-fnd") >> pubsub >> func >> Storage("hko-fnd")
+    Scheduler("hko-rhrread") >> pubsub >> func >> Storage("hko-rhrread")
