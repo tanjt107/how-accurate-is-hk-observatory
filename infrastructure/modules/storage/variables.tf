@@ -1,8 +1,8 @@
-variable "fnd_bucket_name" {
+variable "fnd_raw_bucket_name" {
     type = string
 }
 
-variable "rhrread_bucket_name" {
+variable "rhrread_raw_bucket_name" {
     type = string
 }
 
