@@ -1,11 +1,13 @@
+import functions_framework
 import requests
 from datetime import datetime, timedelta
 from google.cloud import storage
 
 
-def get_hko_data(event: dict, context: dict):
+@functions_framework.cloud_event
+def get_hko_data(cloud_event: dict):
     """Makes HTTP get request to HKO API and uploads the response to the bucket."""
-    attributes = event["attributes"]
+    attributes = cloud_event.data["message"]["attributes"]
     response = requests.get(
         "https://data.weather.gov.hk/weatherAPI/opendata/weather.php",
         params={"dataType": attributes["endpoint"], "lang": "en"},
@@ -16,4 +18,3 @@ def get_hko_data(event: dict, context: dict):
     file_name = f"{hkt.isoformat(timespec='minutes')}.json"
     blob = bucket.blob(file_name)
     blob.upload_from_string(response.content)
-    return f"{file_name} uploaded to {bucket}"
