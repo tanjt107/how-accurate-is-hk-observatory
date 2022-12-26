@@ -2,15 +2,23 @@ variable "location" {
     type = string
 }
 
+variable "extract_zip_name" {
+    type = string
+}
+
+variable "forecast_bucket_name" {
+    type = string
+}
+
+variable "forecast_zip_name" {
+    type = string
+}
+
 variable "fnd_bucket_name" {
     type = string
 }
 
 variable "gcf_bucket_name" {
-    type = string
-}
-
-variable "gcf_zip_name" {
     type = string
 }
 

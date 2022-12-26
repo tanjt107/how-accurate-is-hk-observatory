@@ -1,8 +1,12 @@
-variable "bucket_location" {
+variable "location" {
     type = string
 }
 
 variable "fnd_bucket_name" {
+    type = string
+}
+
+variable "forecast_bucket_name" {
     type = string
 }
 

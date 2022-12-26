@@ -6,7 +6,7 @@ variable "region" {
     type = string
 }
 
-variable "bucket_location" {
+variable "forecast_bucket_name" {
     type = string
 }
 

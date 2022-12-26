@@ -5,8 +5,7 @@ from google.cloud import storage
 
 
 @functions_framework.cloud_event
-def extract(cloud_event: dict):
-    """Makes HTTP get request to HKO API and uploads the response to the bucket."""
+def extract(cloud_event):
     bucket_names = {
         "fnd": os.environ["FND_BUCKET_NAME"],
         "rhrread": os.environ["RHRREAD_BUCKET_NAME"],
