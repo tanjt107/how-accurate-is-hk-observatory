@@ -1,6 +1,5 @@
 import functions_framework
 import requests
-from datetime import datetime, timedelta
 from google.cloud import storage
 
 
@@ -14,7 +13,6 @@ def get_hko_data(cloud_event: dict):
     )
     storage_client = storage.Client()
     bucket = storage_client.bucket(attributes["bucket_name"])
-    hkt = datetime.now() + timedelta(hours=8)
-    file_name = f"{hkt.isoformat(timespec='minutes')}.json"
+    file_name = f"{response.json()['updateTime']}.json"
     blob = bucket.blob(file_name)
     blob.upload_from_string(response.content)
