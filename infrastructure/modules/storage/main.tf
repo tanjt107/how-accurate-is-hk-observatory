@@ -15,8 +15,8 @@ resource "google_storage_bucket" "gcf" {
     location = var.bucket_location
 }
 
-resource "google_storage_bucket_object" "object" {
-    name   = "hko.zip"
+resource "google_storage_bucket_object" "extact" {
+    name   = "extract.zip"
     bucket = google_storage_bucket.gcf.name
-    source = "./modules/storage/hko.zip"
+    source = "./modules/storage/gcf/extract/extract.zip"
 }

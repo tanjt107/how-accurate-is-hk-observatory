@@ -14,7 +14,7 @@ variable "fnd_bucket_name" {
     type = string
 }
 
-variable "rhrread_bucket_name" {
+variable "fnd_job_name" {
     type = string
 }
 
@@ -26,7 +26,7 @@ variable "pubsub_topic_name" {
     type = string
 }
 
-variable "fnd_job_name" {
+variable "rhrread_bucket_name" {
     type = string
 }
 

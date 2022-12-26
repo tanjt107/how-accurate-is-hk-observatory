@@ -6,7 +6,6 @@ resource "google_cloud_scheduler_job" "fnd" {
     topic_name      = var.pubsub_topic_id
     attributes      = {
         endpoint    = "fnd"
-        bucket_name = var.fnd_bucket_name
     }
   }
 }
@@ -19,7 +18,6 @@ resource "google_cloud_scheduler_job" "rhrread" {
     topic_name      = var.pubsub_topic_id
     attributes      = {
         endpoint    = "rhrread"
-        bucket_name = var.rhrread_bucket_name
     }
   }
 }
