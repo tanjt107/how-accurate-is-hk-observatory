@@ -1,11 +1,11 @@
-resource "google_storage_bucket" "fnd_raw" {
-    name          = var.fnd_raw_bucket_name
+resource "google_storage_bucket" "fnd" {
+    name          = var.fnd_bucket_name
     location      = var.bucket_location
     force_destroy = true
 }
 
-resource "google_storage_bucket" "rhrread_raw" {
-    name          = var.rhrread_raw_bucket_name
+resource "google_storage_bucket" "rhrread" {
+    name          = var.rhrread_bucket_name
     location      = var.bucket_location
     force_destroy = true
 }
