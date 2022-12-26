@@ -10,10 +10,6 @@ variable "forecast_bucket_name" {
     type = string
 }
 
-variable "forecast_zip_name" {
-    type = string
-}
-
 variable "fnd_bucket_name" {
     type = string
 }
@@ -27,5 +23,9 @@ variable "pubsub_topic_id" {
 }
 
 variable "rhrread_bucket_name" {
+    type = string
+}
+
+variable "transform_fnd_zip_name" {
     type = string
 }

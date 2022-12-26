@@ -27,17 +27,17 @@ resource "google_cloudfunctions2_function" "extract" {
     }
 }
 
-resource "google_cloudfunctions2_function" "forecast" {
-    name                         = "hko-forecast"
+resource "google_cloudfunctions2_function" "transform_fnd" {
+    name                         = "hko-transform-fnd"
     location                     = var.location
 
     build_config {
         runtime                  = "python310"
-        entry_point              = "transform"
+        entry_point              = "transform_fnd"
         source {
             storage_source {
                 bucket           = var.gcf_bucket_name
-                object           = var.forecast_zip_name
+                object           = var.transform_fnd_zip_name
           }
         }
     }

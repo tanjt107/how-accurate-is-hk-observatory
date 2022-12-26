@@ -28,8 +28,8 @@ resource "google_storage_bucket_object" "extact" {
     source = "./modules/storage/gcf/extract/extract.zip"
 }
 
-resource "google_storage_bucket_object" "forecast" {
+resource "google_storage_bucket_object" "transform_fnd" {
     name   = "forecast.zip"
     bucket = google_storage_bucket.gcf.name
-    source = "./modules/storage/gcf/transform-forecast/forecast.zip"
+    source = "./modules/storage/gcf/transform-fnd/transform-fnd.zip"
 }

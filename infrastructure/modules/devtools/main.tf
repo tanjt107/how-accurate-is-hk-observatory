@@ -12,7 +12,7 @@ resource "google_cloud_scheduler_job" "fnd" {
 
 resource "google_cloud_scheduler_job" "rhrread" {
   name           = var.rhrread_job_name
-  schedule       = "0 * * * *"
+  schedule       = "5 * * * *"
 
   pubsub_target {
     topic_name   = var.pubsub_topic_id

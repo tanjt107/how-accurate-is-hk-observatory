@@ -1,5 +1,6 @@
 module "analytics" {
     source            = "./modules/analytics"
+    location          = var.region
     pubsub_topic_name = var.pubsub_topic_name
 }
 
@@ -8,7 +9,7 @@ module "compute" {
     location             = var.region
     extract_zip_name     = module.storage.extract_zip_name
     forecast_bucket_name = var.forecast_bucket_name
-    forecast_zip_name    = module.storage.forecast_zip_name
+    transform_fnd_zip_name    = module.storage.transform_fnd_zip_name
     fnd_bucket_name      = var.fnd_bucket_name
     gcf_bucket_name      = var.gcf_bucket_name
     pubsub_topic_id      = module.analytics.pubsub_topic_id
