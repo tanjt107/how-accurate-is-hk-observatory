@@ -1,22 +1,17 @@
 import functions_framework
-import os
 import requests
 from google.cloud import storage
 
 
 @functions_framework.cloud_event
 def extract(cloud_event):
-    bucket_names = {
-        "fnd": os.environ["FND_BUCKET_NAME"],
-        "rhrread": os.environ["RHRREAD_BUCKET_NAME"],
-    }
-    endpoint = cloud_event.data["message"]["attributes"]["endpoint"]
+    attributes = cloud_event.data["message"]["attributes"]
     response = requests.get(
         "https://data.weather.gov.hk/weatherAPI/opendata/weather.php",
-        params={"dataType": endpoint, "lang": "en"},
+        params={"dataType": attributes["endpoint"], "lang": "en"},
     )
     storage_client = storage.Client()
-    bucket = storage_client.bucket(bucket_names[endpoint])
+    bucket = storage_client.bucket(attributes["bucket_name"])
     file_name = f"{response.json()['updateTime']}.json"
     blob = bucket.blob(file_name)
     blob.upload_from_string(response.content)

@@ -5,3 +5,7 @@ output "extract_zip_name" {
 output "transform_fnd_zip_name" {
     value = google_storage_bucket_object.transform_fnd.name
 }
+
+output "load_zip_name" {
+    value = google_storage_bucket_object.load.name
+}

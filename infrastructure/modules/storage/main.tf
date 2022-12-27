@@ -29,7 +29,13 @@ resource "google_storage_bucket_object" "extact" {
 }
 
 resource "google_storage_bucket_object" "transform_fnd" {
-    name   = "forecast.zip"
+    name   = "transform-fnd.zip"
     bucket = google_storage_bucket.gcf.name
     source = "./modules/storage/gcf/transform-fnd/transform-fnd.zip"
+}
+
+resource "google_storage_bucket_object" "load" {
+    name   = "load.zip"
+    bucket = google_storage_bucket.gcf.name
+    source = "./modules/storage/gcf/load/load.zip"
 }

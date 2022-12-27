@@ -5,15 +5,28 @@ from diagrams.gcp.devtools import Scheduler
 from diagrams.gcp.storage import Storage
 
 with Diagram("How accurate is HK Observatory"):
-    extract = (
-        [Scheduler("fnd"), Scheduler("rhrread")]
-        >> Pubsub("topic")
-        >> Functions("extract")
+    extract = Functions("extract")
+    load = Functions("load")
+
+    [Scheduler("fnd"), Scheduler("rhrread")] >> Pubsub("topic") >> extract
+
+    (
+        extract
+        >> Storage("fnd")
+        >> Functions("transform-fnd")
+        >> Storage("forecast")
+        >> load
     )
-    (extract >> Storage("fnd") >> Functions("transform-fnd") >> Storage("forecast"))
     (
         extract
         >> Storage("rhrread")
         >> Functions("transform-rhrread")
-        >> [Storage("rainfall"), Storage("temperature")]
+        >> [Storage("temperature"), Storage("rainfall")]
+        >> load
     )
+
+    load >> [
+        Bigquery("forecast"),
+        Bigquery("temperature"),
+        Bigquery("rainfall"),
+    ]

@@ -1,4 +1,12 @@
+variable "project" {
+    type = string
+}
+
 variable "location" {
+    type = string
+}
+
+variable "dataset_id" {
     type = string
 }
 
@@ -15,6 +23,10 @@ variable "fnd_bucket_name" {
 }
 
 variable "gcf_bucket_name" {
+    type = string
+}
+
+variable "load_zip_name" {
     type = string
 }
 
