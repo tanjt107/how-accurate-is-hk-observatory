@@ -8,8 +8,6 @@ def transform_rainfall(rhrread_str):
     rainfall = json.loads(rhrread_str)["rainfall"]
     start_time = rainfall["startTime"]
     end_time = rainfall["endTime"]
-    # start_time = rainfall["startTime"][:-6]
-    # end_time = rainfall["endTime"][:-6]
     data = rainfall["data"]
     for datum in data:
         datum["startTime"] = start_time
@@ -21,7 +19,6 @@ def transform_rainfall(rhrread_str):
 def transform_temperature(rhrread_str):
     temperature = json.loads(rhrread_str)["temperature"]
     record_time = temperature["recordTime"]
-    # record_time = temperature["recordTime"][:-6]
     data = temperature["data"]
     for datum in data:
         datum["recordTime"] = record_time

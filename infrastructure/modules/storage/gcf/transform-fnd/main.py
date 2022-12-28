@@ -7,7 +7,6 @@ from google.cloud import storage
 def transform_forecast(fnd_str):
     fnd_dict = json.loads(fnd_str)
     update_time = fnd_dict["updateTime"]
-    # update_time = fnd_dict["updateTime"][:-6]
     forecasts = fnd_dict["weatherForecast"]
     for forecast in forecasts:
         forecast[
