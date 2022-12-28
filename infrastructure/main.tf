@@ -4,18 +4,21 @@ module "analytics" {
 }
 
 module "compute" {
-    source                 = "./modules/compute"
-    project                = var.project_name
-    location               = var.region
-    dataset_id             = module.analytics.dataset_id
-    extract_zip_name       = module.storage.extract_zip_name
-    forecast_bucket_name   = var.forecast_bucket_name
-    transform_fnd_zip_name = module.storage.transform_fnd_zip_name
-    fnd_bucket_name        = var.fnd_bucket_name
-    gcf_bucket_name        = var.gcf_bucket_name
-    load_zip_name          = module.storage.load_zip_name
-    pubsub_topic_id        = module.analytics.pubsub_topic_id
-    rhrread_bucket_name    = var.rhrread_bucket_name
+    source                     = "./modules/compute"
+    project                    = var.project_name
+    location                   = var.region
+    dataset_id                 = module.analytics.dataset_id
+    extract_zip_name           = module.storage.extract_zip_name
+    fnd_bucket_name            = var.fnd_bucket_name
+    forecast_bucket_name       = var.forecast_bucket_name
+    gcf_bucket_name            = var.gcf_bucket_name
+    rainfall_bucket_name       = var.rainfall_bucket_name
+    temperature_bucket_name    = var.temperature_bucket_name
+    transform_fnd_zip_name     = module.storage.transform_fnd_zip_name
+    transform_rhrread_zip_name = module.storage.transform_rhrread_zip_name
+    load_zip_name              = module.storage.load_zip_name
+    pubsub_topic_id            = module.analytics.pubsub_topic_id
+    rhrread_bucket_name        = var.rhrread_bucket_name
 }
 
 module "devtools" {
@@ -26,10 +29,12 @@ module "devtools" {
 }
 
 module "storage" {
-    source               = "./modules/storage"
-    location             = var.region
-    fnd_bucket_name      = var.fnd_bucket_name
-    forecast_bucket_name = var.forecast_bucket_name
-    gcf_bucket_name      = var.gcf_bucket_name
-    rhrread_bucket_name  = var.rhrread_bucket_name
+    source                  = "./modules/storage"
+    location                = var.region
+    fnd_bucket_name         = var.fnd_bucket_name
+    forecast_bucket_name    = var.forecast_bucket_name
+    gcf_bucket_name         = var.gcf_bucket_name
+    rainfall_bucket_name    = var.rainfall_bucket_name
+    rhrread_bucket_name     = var.rhrread_bucket_name
+    temperature_bucket_name = var.temperature_bucket_name
 }

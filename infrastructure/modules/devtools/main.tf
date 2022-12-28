@@ -1,6 +1,6 @@
 resource "google_cloud_scheduler_job" "fnd" {
   name              = "fnd"
-  schedule          = "0 * * * *"
+  schedule          = "35 11,16 * * *"
   time_zone         = "Asia/Hong_Kong"
 
   pubsub_target {

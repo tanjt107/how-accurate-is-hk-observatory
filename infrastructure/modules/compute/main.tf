@@ -50,6 +50,37 @@ resource "google_cloudfunctions2_function" "transform_fnd" {
     }
 }
 
+resource "google_cloudfunctions2_function" "transform_rhrread" {
+    name                            = "hko-transform-rhrread"
+    location                        = var.location
+
+    build_config {
+        runtime                     = "python310"
+        entry_point                 = "transform_rhrread"
+        source {
+            storage_source {
+                bucket              = var.gcf_bucket_name
+                object              = var.transform_rhrread_zip_name
+          }
+        }
+    }
+
+    service_config {
+        environment_variables       = {
+            RAINFALL_BUCKET_NAME    = var.rainfall_bucket_name
+            TEMPERATURE_BUCKET_NAME = var.temperature_bucket_name
+        }
+    }
+
+    event_trigger {
+        event_type                  = "google.cloud.storage.object.v1.finalized"
+        event_filters {
+            attribute               = "bucket"
+            value                   = var.rhrread_bucket_name
+        }
+    }
+}
+
 resource "google_cloudfunctions2_function" "load_forecast" {
     name                      = "hko-load-forecast"
     location                  = var.location
@@ -76,6 +107,66 @@ resource "google_cloudfunctions2_function" "load_forecast" {
         event_filters {
             attribute         = "bucket"
             value             = var.forecast_bucket_name
+        }
+    }
+}
+
+resource "google_cloudfunctions2_function" "load_rainfall" {
+    name                      = "hko-load-rainfall"
+    location                  = var.location
+
+    build_config {
+        runtime               = "python310"
+        entry_point           = "load"
+        source {
+            storage_source {
+                bucket        = var.gcf_bucket_name
+                object        = var.load_zip_name
+          }
+        }
+    }
+
+    service_config {
+        environment_variables = {
+            DESTINATION       = "${var.project}.${var.dataset_id}.rainfall"
+        }
+    }
+
+    event_trigger {
+        event_type            = "google.cloud.storage.object.v1.finalized"
+        event_filters {
+            attribute         = "bucket"
+            value             = var.rainfall_bucket_name
+        }
+    }
+}
+
+resource "google_cloudfunctions2_function" "load_temperature" {
+    name                      = "hko-load-temperature"
+    location                  = var.location
+
+    build_config {
+        runtime               = "python310"
+        entry_point           = "load"
+        source {
+            storage_source {
+                bucket        = var.gcf_bucket_name
+                object        = var.load_zip_name
+          }
+        }
+    }
+
+    service_config {
+        environment_variables = {
+            DESTINATION       = "${var.project}.${var.dataset_id}.temperature"
+        }
+    }
+
+    event_trigger {
+        event_type            = "google.cloud.storage.object.v1.finalized"
+        event_filters {
+            attribute         = "bucket"
+            value             = var.temperature_bucket_name
         }
     }
 }

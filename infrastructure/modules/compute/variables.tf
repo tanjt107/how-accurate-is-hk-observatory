@@ -34,10 +34,22 @@ variable "pubsub_topic_id" {
     type = string
 }
 
+variable "rainfall_bucket_name" {
+    type = string
+}
+
 variable "rhrread_bucket_name" {
     type = string
 }
 
+variable "temperature_bucket_name" {
+    type = string
+}
+
 variable "transform_fnd_zip_name" {
+    type = string
+}
+
+variable "transform_rhrread_zip_name" {
     type = string
 }
