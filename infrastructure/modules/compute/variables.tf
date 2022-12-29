@@ -1,55 +1,27 @@
-variable "project" {
-    type = string
-}
+variable "project" {}
 
-variable "location" {
-    type = string
-}
+variable "location" {}
 
-variable "dataset_id" {
-    type = string
-}
+variable "dataset_id" {}
 
-variable "extract_zip_name" {
-    type = string
-}
+variable "extract_zip_name" {}
 
-variable "forecast_bucket_name" {
-    type = string
-}
+variable "forecast_bucket_name" {}
 
-variable "fnd_bucket_name" {
-    type = string
-}
+variable "fnd_bucket_name" {}
 
-variable "gcf_bucket_name" {
-    type = string
-}
+variable "gcf_bucket_name" {}
 
-variable "load_zip_name" {
-    type = string
-}
+variable "load_zip_name" {}
 
-variable "pubsub_topic_id" {
-    type = string
-}
+variable "pubsub_topic_id" {}
 
-variable "rainfall_bucket_name" {
-    type = string
-}
+variable "rainfall_bucket_name" {}
 
-variable "rhrread_bucket_name" {
-    type = string
-}
+variable "rhrread_bucket_name" {}
 
-variable "temperature_bucket_name" {
-    type = string
-}
+variable "temperature_bucket_name" {}
 
-variable "transform_fnd_zip_name" {
-    type = string
-}
+variable "transform_fnd_zip_name" {}
 
-variable "transform_rhrread_zip_name" {
-    type = string
-}
+variable "transform_rhrread_zip_name" {}

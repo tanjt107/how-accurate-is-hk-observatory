@@ -1,27 +1,13 @@
-variable "location" {
-    type = string
-}
+variable "location" {}
 
-variable "fnd_bucket_name" {
-    type = string
-}
+variable "fnd_bucket_name" {}
 
-variable "forecast_bucket_name" {
-    type = string
-}
+variable "forecast_bucket_name" {}
 
-variable "gcf_bucket_name" {
-    type = string
-}
+variable "gcf_bucket_name" {}
 
-variable "rainfall_bucket_name" {
-    type = string
-}
+variable "rainfall_bucket_name" {}
 
-variable "rhrread_bucket_name" {
-    type = string
-}
+variable "rhrread_bucket_name" {}
 
-variable "temperature_bucket_name" {
-    type = string
-}
+variable "temperature_bucket_name" {}

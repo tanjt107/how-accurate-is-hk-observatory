@@ -1,3 +1,27 @@
+output "fnd_bucket_name" {
+    value = google_storage_bucket.fnd.name
+}
+
+output "forecast_bucket_name" {
+    value = google_storage_bucket.forecast.name
+}
+
+output "gcf_bucket_name" {
+    value = google_storage_bucket.gcf.name
+}
+
+output "rainfall_bucket_name" {
+    value = google_storage_bucket.rainfall.name
+}
+
+output "rhrread_bucket_name" {
+    value = google_storage_bucket.rhrread.name
+}
+
+output "temperature_bucket_name" {
+    value = google_storage_bucket.temperature.name
+}
+
 output "extract_zip_name" {
     value = google_storage_bucket_object.extact.name
 }
