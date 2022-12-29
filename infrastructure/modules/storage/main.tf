@@ -31,23 +31,23 @@ resource "google_storage_bucket" "gcf" {
 resource "google_storage_bucket_object" "extact" {
     name   = "extract.zip"
     bucket = google_storage_bucket.gcf.name
-    source = "./modules/storage/gcf/extract/extract.zip"
+    source = "../functions/extract/extract.zip"
 }
 
 resource "google_storage_bucket_object" "transform_fnd" {
     name   = "transform-fnd.zip"
     bucket = google_storage_bucket.gcf.name
-    source = "./modules/storage/gcf/transform-fnd/transform-fnd.zip"
+    source = "../functions/transform-fnd/transform-fnd.zip"
 }
 
 resource "google_storage_bucket_object" "transform_rhrread" {
     name   = "transform-rhrread.zip"
     bucket = google_storage_bucket.gcf.name
-    source = "./modules/storage/gcf/transform-rhrread/transform-rhrread.zip"
+    source = "../functions/transform-rhrread/transform-rhrread.zip"
 }
 
 resource "google_storage_bucket_object" "load" {
     name   = "load.zip"
     bucket = google_storage_bucket.gcf.name
-    source = "./modules/storage/gcf/load/load.zip"
+    source = "../functions/load/load.zip"
 }
