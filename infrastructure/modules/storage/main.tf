@@ -1,37 +1,31 @@
 resource "google_storage_bucket" "fnd" {
-    name          = var.fnd_bucket_name
-    location      = var.location
-    # force_destroy = true
+    name     = var.fnd_bucket_name
+    location = var.location
 }
 
 resource "google_storage_bucket" "forecast" {
-    name          = var.forecast_bucket_name
-    location      = var.location
-    # force_destroy = true
+    name     = var.forecast_bucket_name
+    location = var.location
 }
 
 resource "google_storage_bucket" "rainfall" {
-    name          = var.rainfall_bucket_name
-    location      = var.location
-    # force_destroy = true
+    name     = var.rainfall_bucket_name
+    location = var.location
 }
 
 resource "google_storage_bucket" "rhrread" {
-    name          = var.rhrread_bucket_name
-    location      = var.location
-    # force_destroy = true
+    name     = var.rhrread_bucket_name
+    location = var.location
 }
 
 resource "google_storage_bucket" "temperature" {
-    name          = var.temperature_bucket_name
-    location      = var.location
-    # force_destroy = true
+    name     = var.temperature_bucket_name
+    location = var.location
 }
 
 resource "google_storage_bucket" "gcf" {
-    name          = var.gcf_bucket_name
-    location      = var.location
-    # force_destroy = true
+    name     = var.gcf_bucket_name
+    location = var.location
 }
 
 resource "google_storage_bucket_object" "extact" {

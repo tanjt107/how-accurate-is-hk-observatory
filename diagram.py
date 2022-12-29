@@ -1,8 +1,9 @@
-from diagrams import Diagram
+from diagrams import Cluster, Diagram
 from diagrams.gcp.analytics import Bigquery, Pubsub
 from diagrams.gcp.compute import Functions
 from diagrams.gcp.devtools import Scheduler
 from diagrams.gcp.storage import Storage
+from diagrams.onprem.analytics import Tableau
 
 with Diagram("How accurate is HK Observatory"):
     extract = Functions("extract")
@@ -25,8 +26,11 @@ with Diagram("How accurate is HK Observatory"):
         >> load
     )
 
-    load >> [
-        Bigquery("forecast"),
-        Bigquery("temperature"),
-        Bigquery("rainfall"),
-    ]
+    with Cluster("dataset"):
+        tables = [
+            Bigquery("forecast"),
+            Bigquery("temperature"),
+            Bigquery("rainfall"),
+        ]
+
+    load >> tables >> Tableau()
