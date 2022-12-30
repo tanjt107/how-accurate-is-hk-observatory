@@ -9,7 +9,7 @@ with Diagram("How accurate is HK Observatory"):
     extract = Functions("extract")
     load = Functions("load")
 
-    [Scheduler("fnd"), Scheduler("rhrread")] >> Pubsub("topic") >> extract
+    [Scheduler("fnd"), Scheduler("rhrread")] >> Pubsub() >> extract
 
     (
         extract
@@ -26,7 +26,7 @@ with Diagram("How accurate is HK Observatory"):
         >> load
     )
 
-    with Cluster("dataset"):
+    with Cluster():
         tables = [
             Bigquery("forecast"),
             Bigquery("temperature"),

@@ -1,7 +1,4 @@
 output "dataset_id" {
-    value = google_bigquery_dataset.dataset.dataset_id
-}
-
-output "pubsub_topic_id" {
-    value = google_pubsub_topic.topic.id
+  value       = "${google_bigquery_dataset.this.project}.${google_bigquery_dataset.this.dataset_id}"
+  description = "The ID of the dataset, with the project name."
 }

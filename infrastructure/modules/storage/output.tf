@@ -1,39 +1,24 @@
 output "fnd_bucket_name" {
-    value = google_storage_bucket.fnd.name
-}
-
-output "forecast_bucket_name" {
-    value = google_storage_bucket.forecast.name
-}
-
-output "gcf_bucket_name" {
-    value = google_storage_bucket.gcf.name
-}
-
-output "rainfall_bucket_name" {
-    value = google_storage_bucket.rainfall.name
+  value       = google_storage_bucket.fnd.name
+  description = "The bucket name of 9-day Weather Forecast (fnd) data bucket."
 }
 
 output "rhrread_bucket_name" {
-    value = google_storage_bucket.rhrread.name
+  value       = google_storage_bucket.rhrread.name
+  description = "The bucket name of Current Weather Report (rhrread) data bucket."
+}
+
+output "forecast_bucket_name" {
+  value       = google_storage_bucket.forecast.name
+  description = "The bucket name of Weather Forecast data bucket."
+}
+
+output "rainfall_bucket_name" {
+  value       = google_storage_bucket.rainfall.name
+  description = "The bucket name of Rainfall Forecast data bucket."
 }
 
 output "temperature_bucket_name" {
-    value = google_storage_bucket.temperature.name
-}
-
-output "extract_zip_name" {
-    value = google_storage_bucket_object.extact.name
-}
-
-output "transform_fnd_zip_name" {
-    value = google_storage_bucket_object.transform_fnd.name
-}
-
-output "transform_rhrread_zip_name" {
-    value = google_storage_bucket_object.transform_rhrread.name
-}
-
-output "load_zip_name" {
-    value = google_storage_bucket_object.load.name
+  value       = google_storage_bucket.temperature.name
+  description = "The bucket name of Temperature Forecast data bucket."
 }

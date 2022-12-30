@@ -1,4 +1,4 @@
 provider "google" {
-  project = var.project_name
+  project = "how-accurate-is-hk-observatory"
   region  = var.region
 }

@@ -1,13 +1,17 @@
+resource "google_pubsub_topic" "this" {
+  name = "topic"
+}
+
 resource "google_cloud_scheduler_job" "fnd" {
   name      = "fnd"
   schedule  = "35 11,16 * * *"
   time_zone = "Asia/Hong_Kong"
 
   pubsub_target {
-    topic_name = var.pubsub_topic_id
+    topic_name = google_pubsub_topic.this.id
     attributes = {
-        endpoint    = "fnd"
-        bucket_name = var.fnd_bucket_name
+      data_type   = "fnd"
+      bucket_name = var.fnd_bucket_name
     }
   }
 }
@@ -17,10 +21,10 @@ resource "google_cloud_scheduler_job" "rhrread" {
   schedule = "5 * * * *"
 
   pubsub_target {
-    topic_name = var.pubsub_topic_id
+    topic_name = google_pubsub_topic.this.id
     attributes = {
-        endpoint    = "rhrread"
-        bucket_name = var.rhrread_bucket_name
+      data_type   = "rhrread"
+      bucket_name = var.rhrread_bucket_name
     }
   }
 }

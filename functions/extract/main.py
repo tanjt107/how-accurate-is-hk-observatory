@@ -8,7 +8,7 @@ def extract(cloud_event):
     attributes = cloud_event.data["message"]["attributes"]
     response = requests.get(
         "https://data.weather.gov.hk/weatherAPI/opendata/weather.php",
-        params={"dataType": attributes["endpoint"], "lang": "en"},
+        params={"dataType": attributes["data_type"], "lang": "en"},
     )
     storage_client = storage.Client()
     bucket = storage_client.bucket(attributes["bucket_name"])

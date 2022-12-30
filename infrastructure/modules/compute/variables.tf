@@ -1,27 +1,39 @@
-variable "project" {}
+variable "location" {
+  type        = string
+  description = "The location of buckets and functions."
+}
 
-variable "location" {}
+variable "pubsub_topic" {
+  type        = string
+  description = "The ID of the Pubsub Topic."
+}
 
-variable "dataset_id" {}
+variable "fnd_bucket_name" {
+  type        = string
+  description = "The bucket name of 9-day Weather Forecast (fnd) data bucket."
+}
 
-variable "extract_zip_name" {}
+variable "rhrread_bucket_name" {
+  type        = string
+  description = "The bucket name of Current Weather Report (rhrread) data bucket."
+}
 
-variable "forecast_bucket_name" {}
+variable "dataset_id" {
+  type        = string
+  description = "The ID of the dataset, with the project name."
+}
 
-variable "fnd_bucket_name" {}
+variable "forecast_bucket_name" {
+  type        = string
+  description = "The bucket name of Weather Forecast data bucket."
+}
 
-variable "gcf_bucket_name" {}
+variable "rainfall_bucket_name" {
+  type        = string
+  description = "The bucket name of Rainfall Forecast data bucket."
+}
 
-variable "load_zip_name" {}
-
-variable "pubsub_topic_id" {}
-
-variable "rainfall_bucket_name" {}
-
-variable "rhrread_bucket_name" {}
-
-variable "temperature_bucket_name" {}
-
-variable "transform_fnd_zip_name" {}
-
-variable "transform_rhrread_zip_name" {}
+variable "temperature_bucket_name" {
+  type        = string
+  description = "The bucket name of Temperature Forecast data bucket."
+}
