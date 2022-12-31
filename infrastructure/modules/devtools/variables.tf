@@ -1,9 +1,4 @@
-variable "fnd_bucket_name" {
-  type        = string
-  description = "The bucket name of 9-day Weather Forecast (fnd) data bucket."
+variable "bucket_names" {
+  # type        = object({string = string})
+  description = "The name of buckets."
 }
-
-variable "rhrread_bucket_name" {
-  type        = string
-  description = "The bucket name of Current Weather Report (rhrread) data bucket."
-} 

@@ -55,7 +55,7 @@ resource "google_cloudfunctions2_function" "transform_fnd" {
 
   service_config {
     environment_variables = {
-      FORECAST_BUCKET_NAME = var.forecast_bucket_name
+      FORECAST_BUCKET_NAME = var.bucket_names["forecast"]
     }
   }
 
@@ -63,7 +63,7 @@ resource "google_cloudfunctions2_function" "transform_fnd" {
     event_type = "google.cloud.storage.object.v1.finalized"
     event_filters {
       attribute = "bucket"
-      value     = var.fnd_bucket_name
+      value     = var.bucket_names["fnd"]
     }
   }
 }
@@ -92,8 +92,8 @@ resource "google_cloudfunctions2_function" "transform_rhrread" {
 
   service_config {
     environment_variables = {
-      RAINFALL_BUCKET_NAME    = var.rainfall_bucket_name
-      TEMPERATURE_BUCKET_NAME = var.temperature_bucket_name
+      RAINFALL_BUCKET_NAME    = var.bucket_names["rainfall"]
+      TEMPERATURE_BUCKET_NAME = var.bucket_names["temperature"]
     }
   }
 
@@ -101,7 +101,7 @@ resource "google_cloudfunctions2_function" "transform_rhrread" {
     event_type = "google.cloud.storage.object.v1.finalized"
     event_filters {
       attribute = "bucket"
-      value     = var.rhrread_bucket_name
+      value     = var.bucket_names["rhrread"]
     }
   }
 }
@@ -112,10 +112,12 @@ resource "google_storage_bucket_object" "load" {
   source = "../functions/load.zip"
 }
 
-resource "google_cloudfunctions2_function" "load_forecast" {
-  name        = "hko-load-forecast"
+resource "google_cloudfunctions2_function" "load" {
+  for_each = toset(["forecast", "rainfall", "temperature"])
+
+  name        = "hko-load-${each.value}"
   location    = var.location
-  description = "Load forecast data into the BigQuery table."
+  description = "Load ${each.value} data into the BigQuery table."
 
   build_config {
     runtime     = "python310"
@@ -130,7 +132,7 @@ resource "google_cloudfunctions2_function" "load_forecast" {
 
   service_config {
     environment_variables = {
-      DESTINATION = "${var.dataset_id}.forecast"
+      DESTINATION = "${var.dataset_id}.${each.value}"
     }
   }
 
@@ -138,69 +140,7 @@ resource "google_cloudfunctions2_function" "load_forecast" {
     event_type = "google.cloud.storage.object.v1.finalized"
     event_filters {
       attribute = "bucket"
-      value     = var.forecast_bucket_name
-    }
-  }
-}
-
-resource "google_cloudfunctions2_function" "load_rainfall" {
-  name        = "hko-load-rainfall"
-  location    = var.location
-  description = "Load rainfall data into the BigQuery table."
-
-  build_config {
-    runtime     = "python310"
-    entry_point = "load"
-    source {
-      storage_source {
-        bucket = google_storage_bucket.gcf.name
-        object = google_storage_bucket_object.load.name
-      }
-    }
-  }
-
-  service_config {
-    environment_variables = {
-      DESTINATION = "${var.dataset_id}.rainfall"
-    }
-  }
-
-  event_trigger {
-    event_type = "google.cloud.storage.object.v1.finalized"
-    event_filters {
-      attribute = "bucket"
-      value     = var.rainfall_bucket_name
-    }
-  }
-}
-
-resource "google_cloudfunctions2_function" "load_temperature" {
-  name        = "hko-load-temperature"
-  location    = var.location
-  description = "Loading temperature data into the BigQuery table."
-
-  build_config {
-    runtime     = "python310"
-    entry_point = "load"
-    source {
-      storage_source {
-        bucket = google_storage_bucket.gcf.name
-        object = google_storage_bucket_object.load.name
-      }
-    }
-  }
-
-  service_config {
-    environment_variables = {
-      DESTINATION = "${var.dataset_id}.temperature"
-    }
-  }
-
-  event_trigger {
-    event_type = "google.cloud.storage.object.v1.finalized"
-    event_filters {
-      attribute = "bucket"
-      value     = var.temperature_bucket_name
+      value     = var.bucket_names[each.value]
     }
   }
 }

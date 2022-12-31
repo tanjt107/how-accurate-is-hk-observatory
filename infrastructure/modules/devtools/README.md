@@ -16,8 +16,7 @@
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_fnd_bucket_name"></a> [fnd\_bucket\_name](#input\_fnd\_bucket\_name) | The bucket name of 9-day Weather Forecast (fnd) data bucket. | `string` | n/a | yes |
-| <a name="input_rhrread_bucket_name"></a> [rhrread\_bucket\_name](#input\_rhrread\_bucket\_name) | The bucket name of Current Weather Report (rhrread) data bucket. | `string` | n/a | yes |
+| <a name="input_bucket_names"></a> [bucket\_names](#input\_bucket\_names) | The name of buckets. | `any` | n/a | yes |
 
 ## Outputs
 

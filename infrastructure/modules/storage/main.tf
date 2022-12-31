@@ -1,24 +1,10 @@
-resource "google_storage_bucket" "fnd" {
-  name     = "hko-fnd"
-  location = var.location
+locals {
+  names = toset(["fnd", "forecast", "rainfall", "rhrread", "temperature"])
 }
 
-resource "google_storage_bucket" "forecast" {
-  name     = "hko-forecast"
-  location = var.location
-}
+resource "google_storage_bucket" "buckets" {
+  for_each = local.names
 
-resource "google_storage_bucket" "rainfall" {
-  name     = "hko-rainfall"
-  location = var.location
-}
-
-resource "google_storage_bucket" "rhrread" {
-  name     = "hko-rhrread"
-  location = var.location
-}
-
-resource "google_storage_bucket" "temperature" {
-  name     = "hko-temperature"
+  name     = "hko-${each.value}"
   location = var.location
 }

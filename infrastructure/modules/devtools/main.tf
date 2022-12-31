@@ -11,7 +11,7 @@ resource "google_cloud_scheduler_job" "fnd" {
     topic_name = google_pubsub_topic.this.id
     attributes = {
       data_type   = "fnd"
-      bucket_name = var.fnd_bucket_name
+      bucket_name = var.bucket_names["fnd"]
     }
   }
 }
@@ -24,7 +24,7 @@ resource "google_cloud_scheduler_job" "rhrread" {
     topic_name = google_pubsub_topic.this.id
     attributes = {
       data_type   = "rhrread"
-      bucket_name = var.rhrread_bucket_name
+      bucket_name = var.bucket_names["rhrread"]
     }
   }
 }

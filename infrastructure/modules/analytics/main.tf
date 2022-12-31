@@ -6,6 +6,6 @@ resource "google_bigquery_dataset" "this" {
 
 resource "google_bigquery_dataset_access" "this" {
   dataset_id = google_bigquery_dataset.this.dataset_id
-  role       = "roles/bigquery.dataViewer"
+  role       = "READER"
   iam_member = "allUsers"
 }
