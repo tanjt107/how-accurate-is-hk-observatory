@@ -6,7 +6,7 @@ resource "google_storage_bucket" "gcf" {
 resource "google_storage_bucket_object" "extract" {
   name   = "extract.zip"
   bucket = google_storage_bucket.gcf.name
-  source = "../functions/extract.zip"
+  source = "../function_source/extract.zip"
 }
 
 resource "google_cloudfunctions2_function" "extract" {
@@ -34,7 +34,7 @@ resource "google_cloudfunctions2_function" "extract" {
 resource "google_storage_bucket_object" "transform_fnd" {
   name   = "transform-fnd.zip"
   bucket = google_storage_bucket.gcf.name
-  source = "../functions/transform-fnd.zip"
+  source = "../function_source/transform-fnd.zip"
 }
 
 resource "google_cloudfunctions2_function" "transform_fnd" {
@@ -71,7 +71,7 @@ resource "google_cloudfunctions2_function" "transform_fnd" {
 resource "google_storage_bucket_object" "transform_rhrread" {
   name   = "transform-rhrread.zip"
   bucket = google_storage_bucket.gcf.name
-  source = "../functions/transform-rhrread.zip"
+  source = "../function_source/transform-rhrread.zip"
 }
 
 resource "google_cloudfunctions2_function" "transform_rhrread" {
@@ -109,7 +109,7 @@ resource "google_cloudfunctions2_function" "transform_rhrread" {
 resource "google_storage_bucket_object" "load" {
   name   = "load.zip"
   bucket = google_storage_bucket.gcf.name
-  source = "../functions/load.zip"
+  source = "../function_source/load.zip"
 }
 
 resource "google_cloudfunctions2_function" "load" {
