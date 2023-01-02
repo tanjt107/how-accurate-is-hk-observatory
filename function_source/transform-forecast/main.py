@@ -4,7 +4,7 @@ import os
 from google.cloud import storage
 
 
-def transform_forecast(fnd_str):
+def transform(fnd_str):
     fnd_dict = json.loads(fnd_str)
     update_time = fnd_dict["updateTime"]
     forecasts = fnd_dict["weatherForecast"]
@@ -26,7 +26,7 @@ def transform_forecast(fnd_str):
 
 
 @functions_framework.cloud_event
-def transform_fnd(cloud_event):
+def transform_forecast(cloud_event):
     data = cloud_event.data
     file_name = data["name"]
 
@@ -35,8 +35,8 @@ def transform_fnd(cloud_event):
     blob_raw = bucket_raw.blob(file_name)
 
     content = blob_raw.download_as_string()
-    content = transform_forecast(content)
+    content = transform(content)
 
-    bucket_transformed = storage_client.bucket(os.environ["FORECAST_BUCKET_NAME"])
+    bucket_transformed = storage_client.bucket(os.environ["BUCKET_NAME"])
     blob_transformed = bucket_transformed.blob(file_name)
     blob_transformed.upload_from_string(content)

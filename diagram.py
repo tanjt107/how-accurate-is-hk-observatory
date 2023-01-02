@@ -7,10 +7,9 @@ from diagrams.onprem.analytics import Tableau
 
 with Diagram("How accurate is HK Observatory"):
     extract = Functions("extract")
-    load = Functions("load")
-
     [Scheduler("fnd"), Scheduler("rhrread")] >> Pubsub() >> extract
 
+    load = Functions("load")
     (
         extract
         >> Storage("fnd")
@@ -18,13 +17,16 @@ with Diagram("How accurate is HK Observatory"):
         >> Storage("forecast")
         >> load
     )
+
+    rhrread = Storage("rhrread")
     (
         extract
-        >> Storage("rhrread")
-        >> Functions("transform-rhrread")
-        >> [Storage("temperature"), Storage("rainfall")]
+        >> rhrread
+        >> Functions("transform-temperature")
+        >> Storage("temperature")
         >> load
     )
+    (rhrread >> Functions("transform-rainfall") >> Storage("rainfall") >> load)
 
     with Cluster():
         tables = [
