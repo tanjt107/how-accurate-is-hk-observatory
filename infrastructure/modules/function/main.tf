@@ -1,18 +1,20 @@
-data "archive_file" "main" {
+data "archive_file" "this" {
   type        = "zip"
   output_path = "${var.source_directory}.zip"
   source_dir  = var.source_directory
 }
 
-resource "google_storage_bucket_object" "main" {
+resource "google_storage_bucket_object" "this" {
   bucket = var.bucket_name
   name   = "${split("/", var.source_directory)[length(split("/", var.source_directory)) - 1]}.zip"
-  source = data.archive_file.main.output_path
+  source = data.archive_file.this.output_path
 }
 
-resource "google_cloudfunctions2_function" "main" {
+resource "google_cloudfunctions2_function" "this" {
   name        = var.name
   description = var.description
+  location    = var.region
+  project     = var.project_id
 
   build_config {
     runtime     = var.runtime
@@ -20,7 +22,7 @@ resource "google_cloudfunctions2_function" "main" {
     source {
       storage_source {
         bucket = var.bucket_name
-        object = google_storage_bucket_object.main.name
+        object = google_storage_bucket_object.this.name
       }
     }
   }
@@ -45,5 +47,4 @@ resource "google_cloudfunctions2_function" "main" {
     pubsub_topic = var.topic_name
     retry_policy = var.event_trigger_failure_policy
   }
-  location = var.region
 }

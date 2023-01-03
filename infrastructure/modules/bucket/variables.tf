@@ -1,6 +1,6 @@
-variable "names" {
-  description = "Bucket names."
-  type        = list(string)
+variable "name" {
+  description = "Bucket name."
+  type        = string
 }
 
 variable "prefix" {
@@ -18,4 +18,9 @@ variable "force_destroy" {
   description = "When deleting a bucket, this boolean option will delete all contained objects."
   type        = bool
   default     = false
+}
+
+variable "project_id" {
+  description = "Bucket project id."
+  type        = string
 }

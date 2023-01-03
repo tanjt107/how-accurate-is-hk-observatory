@@ -18,6 +18,16 @@ variable "entry_point" {
   description = "The name of a method in the function source which will be invoked when the function is executed."
 }
 
+variable "region" {
+  type        = string
+  description = "The region in which resources will be applied."
+}
+
+variable "project_id" {
+  type        = string
+  description = "The ID of the project where the resources will be created"
+}
+
 variable "bucket_name" {
   type        = string
   description = "The name of the GCS bucket."
@@ -73,9 +83,4 @@ variable "event_trigger_failure_policy" {
   type        = string
   default     = "RETRY_POLICY_DO_NOT_RETRY"
   description = "If the function should be retried on failure."
-}
-
-variable "region" {
-  type        = string
-  description = "The region in which resources will be applied."
 }

@@ -13,9 +13,9 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [google_cloudfunctions2_function.main](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/cloudfunctions2_function) | resource |
-| [google_storage_bucket_object.main](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/storage_bucket_object) | resource |
-| [archive_file.main](https://registry.terraform.io/providers/hashicorp/archive/latest/docs/data-sources/file) | data source |
+| [google_cloudfunctions2_function.this](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/cloudfunctions2_function) | resource |
+| [google_storage_bucket_object.this](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/storage_bucket_object) | resource |
+| [archive_file.this](https://registry.terraform.io/providers/hashicorp/archive/latest/docs/data-sources/file) | data source |
 
 ## Inputs
 
@@ -31,6 +31,7 @@ No modules.
 | <a name="input_event_type"></a> [event\_type](#input\_event\_type) | The type of event to observe. | `string` | n/a | yes |
 | <a name="input_max_instances"></a> [max\_instances](#input\_max\_instances) | The maximum number of parallel executions of the function. | `number` | `100` | no |
 | <a name="input_name"></a> [name](#input\_name) | The name to apply to the function | `string` | n/a | yes |
+| <a name="input_project_id"></a> [project\_id](#input\_project\_id) | The ID of the project where the resources will be created | `string` | n/a | yes |
 | <a name="input_region"></a> [region](#input\_region) | The region in which resources will be applied. | `string` | n/a | yes |
 | <a name="input_runtime"></a> [runtime](#input\_runtime) | The runtime in which the function will be executed. | `string` | n/a | yes |
 | <a name="input_source_directory"></a> [source\_directory](#input\_source\_directory) | The contents of this directory will be archived and used as the function source. | `string` | n/a | yes |

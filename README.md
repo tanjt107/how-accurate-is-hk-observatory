@@ -6,5 +6,27 @@ Hong Kong Observatory attracts so much complains on the forecast, especially whe
 ## Infrastructure (Google Cloud Platform)
 <img src="how_accurate_is_hk_observatory.png">
 
+## Usage
+Change directory to `infrastructure/<env>`, change the value of variables of `terraform.tfvars` if needed and run the following commands.
+* `terraform init`: initialise the directory
+* `terraform plan`: generate the execution plan
+* `terraform apply`: apply the execution plan
+* `terraform destroy`: destroy the infrastructure
+
+## IAM Roles
+The following Service Accounts must have the following IAM role:
+* Cloud Storage Service Account: `pubsub.publisher`
+
+## APIs
+This project required the following APIs enabled:
+* Artifact Registry API: `artifactregistry.googleapis.com`
+* BigQuery JSON API: `bigquery.googleapis.com`
+* Cloud Build API: `cloudbuild.googleapis.com`
+* Cloud Functions API: `cloudfunctions.googleapis.com`
+* Cloud Run Admin API: `run.googleapis.com`
+* Cloud Scheduler API: `cloudscheduler.googleapis.com`
+* Cloud Storage API: `storage.googleapis.com`
+* Eventarc API: `eventarc.googleapis.com`
+
 ## See also
 [HKO Open Data API Documentation](https://www.hko.gov.hk/en/weatherAPI/doc/files/HKO_Open_Data_API_Documentation.pdf)

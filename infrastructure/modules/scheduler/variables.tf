@@ -19,6 +19,11 @@ variable "region" {
   description = "The region in which scheduler will be applied."
 }
 
+variable "project_id" {
+  type        = string
+  description = "The ID of the project where the resources will be created"
+}
+
 variable "topic_name" {
   type        = string
   description = "Name of target pubsub topic."

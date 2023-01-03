@@ -10,6 +10,7 @@ module "project" {
     "cloudfunctions.googleapis.com",
     "run.googleapis.com",
     "cloudscheduler.googleapis.com",
+    "storage.googleapis.com",
     "eventarc.googleapis.com"
   ]
   activate_api_identities = [{
