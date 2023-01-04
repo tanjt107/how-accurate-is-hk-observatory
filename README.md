@@ -7,7 +7,7 @@ Hong Kong Observatory attracts so much complains on the forecast, especially whe
 <img src="how_accurate_is_hk_observatory.png">
 
 ## Usage
-Change directory to `infrastructure/<env>`, change the value of variables of `terraform.tfvars` if needed and run the following commands.
+Change directory to `infrastructure/<env>`, populate variables in `terraform.tfvars`  and run the following commands.
 * `terraform init`: initialise the directory
 * `terraform plan`: generate the execution plan
 * `terraform apply`: apply the execution plan
@@ -18,7 +18,7 @@ The following Service Accounts must have the following IAM role:
 * Cloud Storage Service Account: `pubsub.publisher`
 
 ## APIs
-This project required the following APIs enabled:
+This project requires the following APIs enabled:
 * Artifact Registry API: `artifactregistry.googleapis.com`
 * BigQuery JSON API: `bigquery.googleapis.com`
 * Cloud Build API: `cloudbuild.googleapis.com`

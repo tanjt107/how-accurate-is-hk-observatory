@@ -4,7 +4,7 @@ variable "project_id" {
 }
 
 variable "billing_account" {
-  description = "The ID of the billing account to associate this project with"
+  description = "The ID of the billing account to associate this project with."
   type        = string
 }
 
@@ -26,7 +26,7 @@ variable "api_activated" {
 }
 
 variable "sleep_duration" {
-  description = "The duration to sleep before creating resources"
+  description = "The duration to sleep before creating resources."
   type        = string
   default     = "5m"
 }

@@ -15,7 +15,7 @@ variable "location" {
 }
 
 variable "project_id" {
-  description = "Project where the dataset and table are created"
+  description = "Project where the dataset and table are created."
   type        = string
 }
 

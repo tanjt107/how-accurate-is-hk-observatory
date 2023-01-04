@@ -5,7 +5,7 @@ variable "name" {
 
 variable "description" {
   type        = string
-  description = "Processes log export events provided through a Pub/Sub topic subscription."
+  description = "The description of the function."
 }
 
 variable "runtime" {

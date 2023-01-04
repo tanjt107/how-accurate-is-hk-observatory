@@ -28,11 +28,11 @@
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_api_activated"></a> [api\_activated](#input\_api\_activated) | Are apis activated within the project. | `bool` | `false` | no |
-| <a name="input_billing_account"></a> [billing\_account](#input\_billing\_account) | The ID of the billing account to associate this project with | `string` | n/a | yes |
+| <a name="input_billing_account"></a> [billing\_account](#input\_billing\_account) | The ID of the billing account to associate this project with. | `string` | n/a | yes |
 | <a name="input_env"></a> [env](#input\_env) | The environment name. | `string` | `"prod"` | no |
 | <a name="input_project_id"></a> [project\_id](#input\_project\_id) | The ID of the project to which resources will be applied. | `string` | n/a | yes |
 | <a name="input_region"></a> [region](#input\_region) | The region in which resources will be applied. | `string` | n/a | yes |
-| <a name="input_sleep_duration"></a> [sleep\_duration](#input\_sleep\_duration) | The duration to sleep before creating resources | `string` | `"3m"` | no |
+| <a name="input_sleep_duration"></a> [sleep\_duration](#input\_sleep\_duration) | The duration to sleep before creating resources. | `string` | `"3m"` | no |
 
 ## Outputs
 

@@ -23,7 +23,7 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_available_memory_mb"></a> [available\_memory\_mb](#input\_available\_memory\_mb) | The amount of memory in megabytes allotted for the function to use. | `number` | `256` | no |
 | <a name="input_bucket_name"></a> [bucket\_name](#input\_bucket\_name) | The name of the GCS bucket. | `string` | n/a | yes |
-| <a name="input_description"></a> [description](#input\_description) | Processes log export events provided through a Pub/Sub topic subscription. | `string` | n/a | yes |
+| <a name="input_description"></a> [description](#input\_description) | The description of the function. | `string` | n/a | yes |
 | <a name="input_entry_point"></a> [entry\_point](#input\_entry\_point) | The name of a method in the function source which will be invoked when the function is executed. | `string` | n/a | yes |
 | <a name="input_environment_variables"></a> [environment\_variables](#input\_environment\_variables) | A set of key/value environment variable pairs to assign to the function. | `map(string)` | `{}` | no |
 | <a name="input_event_filters"></a> [event\_filters](#input\_event\_filters) | Criteria used to filter events. | `map(string)` | `{}` | no |

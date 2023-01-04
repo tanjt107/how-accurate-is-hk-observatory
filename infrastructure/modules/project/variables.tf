@@ -1,20 +1,20 @@
 variable "name" {
-  description = "The name for the project"
+  description = "The name for the project."
   type        = string
 }
 
 variable "project_id" {
-  description = "The GCP project you want to enable APIs on"
+  description = "The GCP project you want to enable APIs on."
   type        = string
 }
 
 variable "billing_account" {
-  description = "The ID of the billing account to associate this project with"
+  description = "The ID of the billing account to associate this project with."
   type        = string
 }
 
 variable "activate_apis" {
-  description = "The list of apis to activate within the project"
+  description = "The list of apis to activate within the project."
   type        = list(string)
   default     = []
 }
